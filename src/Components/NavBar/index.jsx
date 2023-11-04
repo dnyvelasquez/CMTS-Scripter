@@ -1,8 +1,7 @@
-import { Context } from "../../Context";
 import { useContext, useEffect, useState } from "react";
+import { Context } from "../../Context";
 import { NavLink } from "react-router-dom";
 import copy from "copy-to-clipboard";
-import './styles.css';
 import logo from "../../assets/DVShark.svg";
 
 const NavBar = () => {
@@ -35,6 +34,9 @@ const NavBar = () => {
                                 console.log(oc[0].script)
                             }}    
                         />
+                        <button className="primary-button border-2 w-20 h-8 rounded-md">
+                            Search
+                        </button>
                     </li>
                     <li className="font-semibold">                        
                         <button onClick={() => {

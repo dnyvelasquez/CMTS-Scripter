@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Context } from '../../Context';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import LeftCbr8 from './LeftCbr8';
-import './styles.css';
 
 const LeftSideBar = () => {
     const context = useContext(Context);

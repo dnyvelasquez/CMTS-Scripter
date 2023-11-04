@@ -13,7 +13,6 @@ import ConfFiberNodeAScript from './ConfFiberNodeAScript'
 import DelShutFiberNodeBScript from './DelShutFiberNodeBScript'
 import ConfFiberNodeBScript from './ConfFiberNodeBScript'
 import ConfLoadScript from './ConfLoadScript'
-import "./styles.css";
 
 const Cbr8Script = () => {
   

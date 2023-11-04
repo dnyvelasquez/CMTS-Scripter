@@ -2,3 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+.nav-bar {
+    background-color: #eff8f8;
+}
+
+.primary-button {
+    background-color: #26cfd8;
+    border-color: #188c9b;
+}
+
+.primary-button:hover {
+    background-color: #21b6c4;
+}
+
+.primary-select {
+    border-color: #188c9b;
+}
+
+input {
+    border-color:  #188c9b;
+}
+
+input[type=text]{
+    border-color: #188c9b;
+}
+
+textarea {
+    border-color: #188c9b;
+}
+
+.face-a {
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);    
+    backface-visibility: hidden;      
+    transition: all 0.5s linear;  
+}
+
+.face-b {
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);   
+    backface-visibility: hidden; 
+    transition: all 0.5s linear;
+}
+
+.left-side-bar {
+    height: calc(100vh - 70px);
+    top: 68px;
+    background-color: #eff8f8;
+    width: 500px;
+}
+
+.left-side-bar--wide {
+    left: 0px; 
+    transition: left 2s;
+}
+
+.left-side-bar--narrow {
+    left: -450px;
+    transition: left 2s;
+}
+
+.left-left-arrow {
+    rotate: 180deg; 
+    transition: rotate 2s;
+}
+
+.left-right-arrow {
+    rotate: 0deg; 
+    transition: rotate 2s;
+}
+
+.inside-bar {
+    height: calc(100% - 70px);
+}
+
+.right-side-bar {
+    height: calc(100vh - 70px);
+    top: 68px;
+    background-color: #eff8f8;
+    width: 960px;
+}
+
+.right-side-bar--wide {
+    right: 0px; 
+    transition: right 2s;
+}
+
+.right-side-bar--narrow {
+    right: -910px; 
+    transition: right 2s;
+}
+
+.right-left-arrow {
+    rotate: 180deg; 
+    transition: rotate 2s;
+}
+
+.right-right-arrow {
+    rotate: 0deg; 
+    transition: rotate 2s;
+}
+
+.inside-bar {
+    height: calc(100% - 70px); 
+}
+
+.sep-button {
+    background-color: #26cfd8;
+    border-color: #188c9b;
+    cursor: none;
+}
+
+.card {
+    perspective: 1000px;
+}

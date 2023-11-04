@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../Context";
 import { NavLink } from "react-router-dom";
-import "./styles.css";
 
 const ModalNew = () => {
   const context = useContext(Context);

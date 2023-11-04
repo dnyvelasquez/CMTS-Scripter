@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../../Context";
 import copy from "copy-to-clipboard";
-import "./styles.css";
 
 const DelShutUpstreamAScript = () => {
 

@@ -30,6 +30,8 @@ export const ContextProvider = ({children}) => {
 
     const [isScript, setIsScript] = useState(true);
 
+    const [searchOc, setSearchOc] = useState('');
+
     const [superOc, setSuperOc] = useState({})
 
     const [interfaceCable, setInterfaceCable] = useState('');
