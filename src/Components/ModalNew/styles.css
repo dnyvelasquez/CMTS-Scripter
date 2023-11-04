@@ -1,0 +1,16 @@
+.primary-button {
+    background-color: #26cfd8;
+    border-color: #188c9b;
+}
+
+.primary-button:hover {
+    background-color: #21b6c4;
+}
+
+.primary-select {
+    border-color: #188c9b;
+}
+
+input[type=text]{
+    border-color: #188c9b;
+}

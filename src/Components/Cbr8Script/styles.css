@@ -1,0 +1,31 @@
+.primary-button {
+    background-color: #26cfd8;
+    border-color: #188c9b;
+}
+
+.primary-button:hover {
+    background-color: #21b6c4;
+}
+
+.primary-select {
+    border-color: #188c9b;
+}
+
+textarea {
+    border-color: #188c9b;
+}
+
+.face-a {
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);    
+    backface-visibility: hidden;      
+    transition: all 0.5s linear;  
+}
+
+.face-b {
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);   
+    backface-visibility: hidden; 
+    transition: all 0.5s linear;
+}
+

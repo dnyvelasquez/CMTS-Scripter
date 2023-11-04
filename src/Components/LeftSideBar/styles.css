@@ -1,0 +1,31 @@
+.left-side-bar {
+    height: calc(100vh - 70px);
+    top: 68px;
+    background-color: #eff8f8;
+    width: 500px;
+}
+
+.left-side-bar--wide {
+    left: 0px; 
+    transition: left 2s;
+}
+
+.left-side-bar--narrow {
+    left: -450px;
+    transition: left 2s;
+}
+
+.left-left-arrow {
+    rotate: 180deg; 
+    transition: rotate 2s;
+}
+
+.left-right-arrow {
+    rotate: 0deg; 
+    transition: rotate 2s;
+}
+
+.inside-bar {
+    height: calc(100% - 70px);
+}
+
