@@ -15,7 +15,7 @@ const RightSideBar = () => {
                 <p className='font-bold text-xs'>Oper</p>
                 <p className='font-bold text-xs'>state</p>
             </div>
-            {context.cmts === 'cbr8' ? <RightCbr8 /> : false}
+            {context.script.cmts === 'cbr8' ? <RightCbr8 /> : false}
         </aside>
     )
 }

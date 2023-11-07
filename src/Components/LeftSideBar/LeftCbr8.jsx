@@ -5,24 +5,19 @@ import copy from "copy-to-clipboard";
 const LeftCbr8 = () => {
 
     const context = useContext(Context);
-    const [startInterface, setStartInterface] = useState("");
-    const [startIntegrated, setStartIntegrated] = useState("");
-    const [startUpstreamA, setStartUpstreamA] = useState("");
-    const [startUpstreamB, setStartUpstreamB] = useState("");
-    const [startFiberNodeA, setStartFiberNodeA] = useState("");
-    const [startFiberNodeB, setStartFiberNodeB] = useState("");
+    const [inputText, setInputText] = useState('');
 
     return(
         <div className='pr-8 mt-4 overflow-y-auto inside-bar border-t-2 p-2'>
             <textarea
                 rows={20}
                 cols={60}
-                value={startInterface}
+                value={context.script.startInterface ? context.script.startInterface : ''}
                 placeholder="Interface-Cable"
                 className="border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startInterface = event.target.value;
-                    setStartInterface(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -30,7 +25,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartInterface(clipText)
+                            setInputText(clipText)
+                            context.script.startInterface = clipText
                         })
                     }}    
                 >
@@ -44,7 +40,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartInterface('')}}                        
+                    onClick={() => {
+                        context.script.startInterface = ''
+                        setInputText('');
+                    }}                        
                 >
                     Clear
                 </button>
@@ -52,12 +51,12 @@ const LeftCbr8 = () => {
             <textarea
                 rows={20}
                 cols={60}
-                value={startIntegrated}
+                value={context.script.startIntegrated ? context.script.startIntegrated : ''}
                 placeholder="Integrated-Cable"
                 className="place-self-end border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startIntegrated = event.target.value;
-                    setStartIntegrated(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -65,7 +64,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartIntegrated(clipText)
+                            context.script.startIntegrated = clipText
+                            setInputText(clipText);
                         })
                     }}    
                 >
@@ -79,7 +79,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartIntegrated('')}}                        
+                    onClick={() => {
+                        setInputText('');
+                        context.script.startIntegrated = ''
+                    }}                        
                 >
                     Clear
                 </button>
@@ -87,12 +90,12 @@ const LeftCbr8 = () => {
             <textarea
                 rows={20}
                 cols={60}
-                value={startUpstreamA}
+                value={context.script.startUpstreamA ? context.script.startUpstreamA : ''}
                 placeholder="Upstream-Cable (Seg A)"
                 className="place-self-end border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startUpstreamA = event.target.value;
-                    setStartUpstreamA(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -100,7 +103,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartUpstreamA(clipText)
+                            setInputText(clipText);
+                            context.script.startUpstreamA = clipText;
                         })
                     }}    
                 >
@@ -114,7 +118,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartUpstreamA('')}}                        
+                    onClick={() => {
+                        setInputText('')
+                        context.script.startUpstreamA = '';
+                    }}                        
                 >
                     Clear
                 </button>
@@ -122,12 +129,12 @@ const LeftCbr8 = () => {
             <textarea
                 rows={20}
                 cols={60}
-                value={startUpstreamB}
+                value={context.script.startUpstreamB ? context.script.startUpstreamB : ''}
                 placeholder="Upstream-Cable (Seg B)"
                 className="place-self-end border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startUpstreamB = event.target.value;
-                    setStartUpstreamB(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -135,7 +142,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartUpstreamB(clipText)
+                            setInputText(clipText);
+                            context.script.startUpstreamB = clipText;
                         })
                     }}    
                 >
@@ -149,7 +157,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartUpstreamB('')}}                        
+                    onClick={() => {
+                        setInputText('');
+                        context.script.startUpstreamB = '';                        
+                    }}                        
                 >
                     Clear
                 </button>
@@ -157,12 +168,12 @@ const LeftCbr8 = () => {
             <textarea
                 rows={5}
                 cols={60}
-                value={startFiberNodeA}
+                value={context.script.startFiberNodeA ? context.script.startFiberNodeA :''}
                 placeholder="Fiber-Node (Seg A)"
                 className="place-self-end border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startFiberNodeA = event.target.value;
-                    setStartFiberNodeA(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -170,7 +181,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartFiberNodeA(clipText)
+                            setInputText(clipText);
+                            context.script.startFiberNodeA = clipText;
                         })
                     }}    
                 >
@@ -184,7 +196,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartFiberNodeA('')}}                        
+                    onClick={() => {
+                        setInputText('');
+                        context.script.startFiberNodeA = ''
+                    } }
                 >
                     Clear
                 </button>
@@ -192,12 +207,12 @@ const LeftCbr8 = () => {
             <textarea
                 rows={5}
                 cols={60}
-                value={startFiberNodeB}
+                value={context.script.startFiberNodeB ? context.script.startFiberNodeB : ''}
                 placeholder="Fiber-Node (Seg B)"
                 className="place-self-end border-2 resize-none rounded-md text-sm mb-4"
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.startFiberNodeB = event.target.value;
-                    setStartFiberNodeB(event.target.value);
                 }}
             />
             <div className='flex justify-end gap-1 mb-4'>
@@ -205,7 +220,8 @@ const LeftCbr8 = () => {
                     className='primary-button rounded-md w-20 h-8 border-2'
                     onClick={() => {
                         navigator.clipboard.readText().then((clipText) => {
-                            setStartFiberNodeB(clipText)
+                            setInputText(clipText);
+                            context.script.startFiberNodeB = clipText;
                         })
                     }}    
                 >
@@ -219,7 +235,10 @@ const LeftCbr8 = () => {
                 </button>
                 <button 
                     className='primary-button rounded-md w-20 h-8 border-2 place-self-end'
-                    onClick={() => {setStartFiberNodeB('')}}                       
+                    onClick={() => {
+                        setInputText('');
+                        context.script.startFiberNodeB = '';
+                    }}                       
                 >
                     Clear
                 </button>

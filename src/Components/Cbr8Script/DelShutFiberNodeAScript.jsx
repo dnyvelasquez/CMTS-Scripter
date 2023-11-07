@@ -6,15 +6,13 @@ const DelShutFiberNodeAScript = () => {
 
     const context = useContext(Context);
     const [delShutFiberNodeA, setdelShutFiberNodeA] = useState("clear");
-    const [scriptDelShutFiberNodeA, setScriptDelShutFiberNodeA] = useState("");
-    const [fiberNodeA, setFiberNodeA] = useState("");
+    const [inputText, setInputText] = useState('');
     const scriptArray = [];
 
     const script = () => {
 
         if (delShutFiberNodeA === 'clear') {
             context.script.scriptDelShutFiberNodeA = ''; 
-            setScriptDelShutFiberNodeA('');
         }
 
         if (delShutFiberNodeA === 'no description') {
@@ -22,7 +20,6 @@ const DelShutFiberNodeAScript = () => {
             scriptArray.push(`  no description\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptDelShutFiberNodeA = scriptArray.join('');  
-            setScriptDelShutFiberNodeA(scriptArray.join(''));  
         }
 
         if (delShutFiberNodeA === 'no upstream') {
@@ -30,8 +27,8 @@ const DelShutFiberNodeAScript = () => {
             scriptArray.push(`  no upstream Upstream-Cable ${context.script.card}/0/${context.script.usConnA}\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptDelShutFiberNodeA = scriptArray.join('');  
-            setScriptDelShutFiberNodeA(scriptArray.join(''));  
         }
+        setInputText(scriptArray.join(''));
     }    
 
 
@@ -40,22 +37,22 @@ const DelShutFiberNodeAScript = () => {
             <textarea
                 rows={5}
                 cols={64}
-                value={scriptDelShutFiberNodeA}
+                value={context.script.scriptDelShutFiberNodeA ? context.script.scriptDelShutFiberNodeA : ''}
                 placeholder="delete/shutdown Fiber-Node (Seg A)"
                 className="place-self-center border-2 w-full resize-none rounded-md my-4 text-sm"
                 onChange={(event)=> {
-                    context.script.setScriptDelShutFiberNodeA = event.target.value;
-                    setScriptDelShutFiberNodeA(event.target.value);
+                    setInputText(event.target.value);
+                    context.script.scriptDelShutFiberNodeA = event.target.value;
                 }}
             />
             <div className="flex col-start-1 row-start-9 justify-end gap-1">
                 <input type="text" 
                     className="border-2 w-24 h-8 rounded-md textarea"
-                    value={fiberNodeA}
+                    value={context.script.fiberNodeA ? context.script.fiberNodeA : ''}
                     placeholder="Fiber-Node" 
                     onChange={(event)=> {
+                        setInputText(event.target.value);
                         context.script.fiberNodeA = event.target.value
-                        setFiberNodeA(event.target.value)
                     }}             
                 />
                 <select

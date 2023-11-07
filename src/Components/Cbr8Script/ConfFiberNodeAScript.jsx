@@ -6,14 +6,13 @@ const ConfFiberNodeAScript = () => {
 
     const context = useContext(Context);
     const [confFiberNodeA, setConfFiberNodeA] = useState("clear");
-    const [scriptConfFiberNodeA, setScriptConfFiberNodeA] = useState("");
+    const [inputText, setInputText] = useState('')
     const scriptArray = [];
 
     const script = () => {
 
         if (confFiberNodeA === 'clear') {
             context.script.scriptConfFiberNodeA = '';  
-            setScriptConfFiberNodeA('');  
         }
 
         if (confFiberNodeA === 'description') {
@@ -21,7 +20,6 @@ const ConfFiberNodeAScript = () => {
             scriptArray.push(`  description ${context.script.usDescA}\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptConfFiberNodeA = scriptArray.join('');  
-            setScriptConfFiberNodeA(scriptArray.join(''));  
         }
 
         if (confFiberNodeA === 'configure') {
@@ -31,8 +29,8 @@ const ConfFiberNodeAScript = () => {
             scriptArray.push(`  upstream Upstream-Cable ${context.script.card}/0/${context.script.usConnA}\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptConfFiberNodeA = scriptArray.join('');  
-            setScriptConfFiberNodeA(scriptArray.join(''));  
         }
+        setInputText(scriptArray.join(''))
     }    
 
 
@@ -41,12 +39,12 @@ const ConfFiberNodeAScript = () => {
             <textarea
                 rows={5}
                 cols={72}
-                value={scriptConfFiberNodeA}
+                value={context.script.scriptConfFiberNodeA ? context.script.scriptConfFiberNodeA : ''}
                 placeholder="Configure Fiber-Node (Seg A)"
                 className="place-self-center border-2 w-full resize-none rounded-md my-4 text-sm"
                 onChange={(event)=> {
+                    setInputText(event.target.value);
                     context.script.scriptConfFiberNodeA = event.target.value;
-                    setScriptConfFiberNodeA(event.target.value);
                 }}
             />
             <div className="flex col-start-1 row-start-9 justify-end gap-1">

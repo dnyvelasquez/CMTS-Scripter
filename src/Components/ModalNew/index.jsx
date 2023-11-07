@@ -37,13 +37,13 @@ const ModalNew = () => {
                   >
                     Close
                   </button>
-                    <NavLink to={`/${context.cmts}`}>                  
+                    <NavLink to={`/${context.script.cmts}`}>
                         <button id="createButton"
                             className="primary-button border-2 w-20 h-8 rounded-md"
                             onClick={() => {
                                 context.closeModalNew();
                                 context.setIsScript(false);                   
-                                context.setOc(ocNumber.value);    
+                                context.script.oc = ocNumber.value;    
                             }}
                         >
                             Create

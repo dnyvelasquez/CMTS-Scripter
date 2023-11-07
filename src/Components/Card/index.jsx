@@ -17,7 +17,7 @@ const Card = (data) => {
             className="primary-button border-2 block w-full rounded-md  p-4 text-sm font-medium transition hover:scale-105"
             onClick={() => {
               context.openModalNew();
-              context.setCmts(data.data.route);
+              context.script.cmts = data.data.route;
             }}
           >
             New script

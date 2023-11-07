@@ -6,14 +6,13 @@ const DelShutUpstreamBScript = () => {
 
     const context = useContext(Context);
     const [delShutUpstreamB, setDelShutUpstreamB] = useState("clear");
-    const [scriptDelShutUpstreamB, setScriptDelShutUpstreamB] = useState("");
+    const [inputText, setInputText] = useState('');
     const scriptArray = [];
 
     const script = () => {
 
         if (delShutUpstreamB === 'clear') {
             context.script.scriptDelShutUpstreamB = ''; 
-            setScriptDelShutUpstreamB('');
         }
 
         if (delShutUpstreamB === 'script') {
@@ -45,8 +44,8 @@ const DelShutUpstreamBScript = () => {
             scriptArray.push(`  us-channel 5 shutdown\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptDelShutUpstreamB = scriptArray.join('');  
-            setScriptDelShutUpstreamB(scriptArray.join(''));  
         }
+        setInputText(scriptArray.join(''));
     }    
 
     return(
@@ -54,12 +53,12 @@ const DelShutUpstreamBScript = () => {
             <textarea
                 rows={20}
                 cols={64}
-                value={scriptDelShutUpstreamB}
+                value={context.script.scriptDelShutUpstreamB ? context.script.scriptDelShutUpstreamB : ''}
                 placeholder="delete/shutdown Upstream-Cable (Seg B)"
                 className="place-self-center border-2 w-full resize-none rounded-md my-4 text-sm"
                 onChange={(event)=> {
+                    setInputText(event.target.value);
                     context.script.scriptDelShutUpstreamB = event.target.value;
-                    setScriptDelShutUpstreamB(event.target.value);
                 }}
             />
             <div className="flex col-start-1 row-start-7 justify-end gap-1">

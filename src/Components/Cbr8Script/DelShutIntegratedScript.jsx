@@ -6,14 +6,13 @@ const DelShutIntegratedScript = () => {
 
     const scriptArray = [];
     const context = useContext(Context);
-    const [scriptDelShutIntegrated, setScriptDelShutIntegrated] = useState("");
+    const [inputText, setInputText] = useState('');
     const [delShutIntegrated, setDelShutIntegrated] = useState("clear");
 
     const script = () => {
 
         if (delShutIntegrated === 'clear') {
             context.script.scriptDelShutIntegrated = ''; 
-            setScriptDelShutIntegrated('');
         }
 
         if (delShutIntegrated === 'script') {
@@ -23,21 +22,21 @@ const DelShutIntegratedScript = () => {
             scriptArray.push(`  no description\n`);
             scriptArray.push(`exit\n`);
             context.script.scriptDelShutIntegrated = scriptArray.join('');  
-            setScriptDelShutIntegrated(scriptArray.join(''));  
             }
-    }    
+            setInputText(scriptArray.join(''));
+        }    
 
     return(
         <div className="flex flex-col w-full h-full">
             <textarea
                 rows={20}
                 cols={64}
-                value={scriptDelShutIntegrated}                
+                value={context.script.scriptDelShutIntegrated ? context.script.scriptDelShutIntegrated : ''}                
                 placeholder="delete/shutdown Integrated-Cable"
                 className="place-self-center border-2 w-full resize-none rounded-md my-4 text-sm"
                 onChange={(event)=> {
+                    setInputText(event.target.value);
                     context.script.scriptDelShutIntegrated = event.target.value;
-                    setScriptDelShutIntegrated(event.target.value);
                 }}
             />
             <div className="flex justify-end gap-1">

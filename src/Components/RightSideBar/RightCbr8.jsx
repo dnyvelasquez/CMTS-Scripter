@@ -4,32 +4,30 @@ import copy from "copy-to-clipboard";
 
 const RightCbr8 = () => {
   const context = useContext(Context);
-  const [verifCommands, setVerifCommands] = useState('')
-  const [verifBefore, setVerifBefore] = useState('')
-  const [verifAfter, setVerifAfter] = useState('')
+  const [inputText, setInputText] = useState('');
   const scriptArray = [];
 
   const script = () => {
     scriptArray.push(
-      `show cable modem summary Cable${context.interfaceCable} total\n`
+      `show cable modem summary Cable${context.script.card}/0/${context.script.dsConn} total\n`
     );
     scriptArray.push(
-      `show cable mac-domain Cable${context.interfaceCable} rcc\n`
+      `show cable mac-domain Cable${context.script.card}/0/${context.script.dsConn} rcc\n`
     );
     scriptArray.push(
-      `show cable mac-domain Cable${context.interfaceCable} cgd\n`
+      `show cable mac-domain Cable${context.script.card}/0/${context.script.dsConn} cgd\n`
     );
     scriptArray.push(
-      `show controllers Cable${context.interfaceCable} upstream | include Frequency\n`
+      `show controllers Cable${context.script.card}/0/${context.script.dsConn} upstream | include Frequency\n`
     );
     scriptArray.push(
-      `show controllers Cable${context.interfaceCable} downstream | include Frequency\n`
+      `show controllers Cable${context.script.card}/0/${context.script.dsConn} downstream | include Frequency\n`
     );
     scriptArray.push(
-      `show cable modem Cable${context.interfaceCable} partial-mode\n`
+      `show cable modem Cable${context.script.card}/0/${context.script.dsConn} partial-mode\n`
     );
+    setInputText(scriptArray.join(""));
     context.script.verifCommands = scriptArray.join("");
-    setVerifCommands(scriptArray.join(""));
   };
 
   return (
@@ -38,12 +36,12 @@ const RightCbr8 = () => {
         <textarea
           rows={8}
           cols={60}
-          value={verifCommands}
+          value={context.script.verifCommands ? context.script.verifCommands : ''}
           placeholder="Verification commands"
           className="border-2 resize-none rounded-md text-sm mb-4"
           onChange={(event) => {
+            setInputText(event.target.value);
             context.script.verifCommands = event.target.value;
-            setVerifCommands(event.target.value);
           }}
         />
         <div className="flex justify-end gap-1 mb-4">
@@ -70,12 +68,12 @@ const RightCbr8 = () => {
         <textarea
           rows={20}
           cols={60}
-          value={verifBefore}
+          value={context.script.verifBefore ? context.script.verifBefore : ''}
           placeholder="Before"
           className="border-2 resize-none rounded-md text-sm mb-4"
           onChange={(event) => {
+            setInputText(event.target.value);
             context.script.verifBefore = event.target.value;
-            setVerifBefore(event.target.value);
           }}
         />
         <div className="flex justify-end gap-1 mb-4">
@@ -83,7 +81,8 @@ const RightCbr8 = () => {
             className="primary-button rounded-md w-20 h-8 border-2"
             onClick={() => {
               navigator.clipboard.readText().then((clipText) => {
-                setVerifBefore(clipText);
+                setInputText(clipText);
+                context.script.verifBefore = clipText;
               });
             }}
           >
@@ -92,7 +91,8 @@ const RightCbr8 = () => {
           <button
             className="primary-button rounded-md w-20 h-8 border-2 place-self-end"
             onClick={() => {
-              setVerifBefore("");
+              context.script.verifBefore = '';
+              setInputText('');
             }}
           >
             Clear
@@ -104,12 +104,12 @@ const RightCbr8 = () => {
         <textarea
           rows={20}
           cols={60}
-          value={verifAfter}
+          value={context.script.verifAfter ? context.script.verifAfter : ''}
           placeholder="After"
           className="border-2 resize-none rounded-md text-sm mb-4"
           onChange={(event) => {
+            setInputText(event.target.value);
             context.script.verifAfter = event.target.value;
-            setVerifAfter(event.target.value);
           }}
         />
         <div className="flex justify-end gap-1 mb-4">
@@ -117,7 +117,8 @@ const RightCbr8 = () => {
             className="primary-button rounded-md w-20 h-8 border-2"
             onClick={() => {
               navigator.clipboard.readText().then((clipText) => {
-                setVerifAfter(clipText);
+                setInputText(clipText);
+                context.script.verifAfter = clipText;
               });
             }}
           >
@@ -126,7 +127,8 @@ const RightCbr8 = () => {
           <button
             className="primary-button rounded-md w-20 h-8 border-2 place-self-end"
             onClick={() => {
-              setVerifAfter("");
+              setInputText('');
+              context.script.verifAfter = '';
             }}
           >
             Clear

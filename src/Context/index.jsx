@@ -29,15 +29,10 @@ export const ContextProvider = ({children}) => {
     const [insert, setInsert] = useState('')
 
     const [isScript, setIsScript] = useState(true);
-
     const [searchOc, setSearchOc] = useState('');
 
-    const [superOc, setSuperOc] = useState({})
-
     const [interfaceCable, setInterfaceCable] = useState('');
-    const [cmts, setCmts] = useState('');
-    const [oc, setOc] = useState('');
-    
+
     const [script, setScript] = useState({
         dsChan:[],
         dsFreq:[],
@@ -73,12 +68,8 @@ export const ContextProvider = ({children}) => {
             setInterfaceCable,
             script,
             setScript,
-            cmts, 
-            setCmts,
-            oc, 
-            setOc,
-            superOc,
-            setSuperOc,
+            searchOc,
+            setSearchOc,
         }}>
             {children};
         </Context.Provider>    

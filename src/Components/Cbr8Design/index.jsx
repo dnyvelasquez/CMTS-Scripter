@@ -7,15 +7,8 @@ const Cbr8Design = () => {
     const dsCh = Array.from({length: 48}, (_, index) => index + 1);
     const usChA = Array.from({length: 6}, (_, index) => index + 1);
     const usChB = Array.from({length: 6}, (_, index) => index + 1);
+    const [inputText, setInputText] = useState('')
     
-    const [card, setCard] = useState('');    
-    const [dsConn, setDsConn] = useState('');  
-    const [description, setDescription] = useState('');  
-    const [usConnA, setUsConnA] = useState('');  
-    const [usConnB, setUsConnB] = useState('');  
-    const [usDescA, setUsDescA] = useState('');  
-    const [usDescB, setUsDescB] = useState('');  
-
     return (
 
         <div className={`grid place-items-center gap-1 mt-4 absolute top-20
@@ -25,11 +18,11 @@ const Cbr8Design = () => {
             <input                             
                 type='text' 
                 className="col-start-1 row-start-2 border-2 rounded-md w-12 text-center z-10 text-sm" 
-                value={card}
+                value={context.script.card ? context.script.card : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value);
+                    context.setInterfaceCable(`${event.target.value}/0/${context.script.dsConn ? $context.script.dsConn : ''}`)
                     context.script.card = event.target.value;
-                    setCard(event.target.value);
-                    context.setInterfaceCable(`${event.target.value}/0/${dsConn}`);
                 }}
             />
 
@@ -37,26 +30,25 @@ const Cbr8Design = () => {
             <input 
                 type='text'
                 className="col-start-2 row-start-2 border-2 rounded-md w-12 text-center z-10 text-sm" 
-                value={dsConn}
+                value={context.script.dsConn ? context.script.dsConn : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value);
+                    context.setInterfaceCable(`${context.script.card ? context.script.card : ''}/0/${event.target.value}`)
                     context.script.dsConn = event.target.value;
-                    setDsConn(event.target.value);
-                    setUsConnA(event.target.value * 2);
-                    setUsConnB(event.target.value * 2 + 1);
                     context.script.usConnA = event.target.value * 2;
-                    context.script.usConnB = event.target.value * 2 + 1;
-                    context.setInterfaceCable(`${card}/0/${event.target.value}`);
+                    context.script.usConnB =  event.target.value * 2 + 1;
                 }}
             />
 
             <p className="col-start-3 row-start-1 text-xs font-bold">Description</p>
             <input 
-                type='text'
+                type='text'                
+                inputMode='none'
                 className="col-start-3 row-start-2 border-2 rounded-md w-32 text-center z-10 text-sm" 
-                value={description}
+                value={context.script.description ? context.script.description : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value);
                     context.script.description = event.target.value;
-                    setDescription(event.target.value);
                 }}
             />
 
@@ -70,7 +62,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('dsChan');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />)
             }
             
@@ -84,7 +76,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('dsFreq');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />)
             }
             
@@ -98,7 +90,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('dsPow');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />)
             }
 
@@ -113,7 +105,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('dsPrim');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />)
             }
 
@@ -125,20 +117,20 @@ const Cbr8Design = () => {
             <input 
                 type='text' 
                 className="col-start-8 row-start-2 border-2 rounded-md w-12 text-center z-10 text-sm"
-                value={usConnA}
+                value={context.script.usConnA ? context.script.usConnA : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value)
                     context.script.usConnA = event.target.value;
-                    setUsConnA(event.target.value);
                 }}                
             />
             <input 
                 type='text' 
                 className="col-start-8 row-start-7 border-2 rounded-md w-12 text-center z-10 text-sm" 
                 style={{gridRowStart: 8}}
-                value={usConnB}
+                value={context.script.usConnB ? context.script.usConnB : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value)
                     context.script.usConnB = event.target.value;
-                    setUsConnB(event.target.value);
                 }}
             />
 
@@ -146,20 +138,20 @@ const Cbr8Design = () => {
             <input 
                 type='text' 
                 className="col-start-9 row-start-2 border-2 rounded-md w-32 text-center z-10 text-sm"
-                value={usDescA}
+                value={context.script.usDescA ? context.script.usDescA : ''}
                 onChange={(event) => {
+                    setInputText(event.target.value)
                     context.script.usDescA = event.target.value;
-                    setUsDescA(event.target.value);
                 }}
             />
             <input 
                 type='text' 
                 className="col-start-9 border-2 rounded-md w-32 text-center resize-none z-10 text-sm" 
-                value={usDescB}
+                value={context.script.usDescB ? context.script.usDescB : ''}
                 style={{gridRowStart: 8}}
                 onChange={(event) => {
+                    setInputText(event.target.value)
                     context.script.usDescB = event.target.value;
-                    setUsDescB(event.target.value);
                 }}
             />
 
@@ -174,7 +166,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usChanA');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
             {usChB.map((item) => 
@@ -187,7 +179,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usChanB');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
 
@@ -202,7 +194,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usFreqA');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
             {usChB.map((item) => 
@@ -215,7 +207,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usFreqB');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
 
@@ -230,7 +222,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usWidthA');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
             {usChB.map((item) => 
@@ -243,7 +235,7 @@ const Cbr8Design = () => {
                         context.openModalInsert();
                         context.setInsert('usWidthB');
                     }}
-                    onChange={() => {}}
+                    onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
 

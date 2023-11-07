@@ -15,7 +15,7 @@ const LeftSideBar = () => {
                 <p className='place-self-end font-bold text-xs'>Start</p>
                 <p className='place-self-end font-bold text-xs'>Conf</p>
             </div>
-            {context.cmts === 'cbr8' ? <LeftCbr8 /> : false}
+            {context.script.cmts === 'cbr8' ? <LeftCbr8 /> : false}
         </aside>
     )
 }

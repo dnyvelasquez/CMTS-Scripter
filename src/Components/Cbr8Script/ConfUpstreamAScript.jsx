@@ -6,14 +6,13 @@ const ConfUpstreamAScript = () => {
 
   const context = useContext(Context);
   const [confUpstreamA, setConfUpstreamA] = useState("clear");
-  const [scriptConfUpstreamA, setScriptConfUpstreamA] = useState("");
+  const [inputText, setInputText] = useState('')
   const scriptArray = [];
 
   const script = () => {
     
     if (confUpstreamA === "clear") {
       context.script.scriptConfUpstreamA = '';  
-      setScriptConfUpstreamA('');  
     }
 
     if (confUpstreamA === "description") {
@@ -25,7 +24,6 @@ const ConfUpstreamAScript = () => {
       })      
       scriptArray.push(`exit\n`);
       context.script.scriptConfUpstreamA = scriptArray.join('');  
-      setScriptConfUpstreamA(scriptArray.join(''));  
     }
 
     if (confUpstreamA === "configure") {
@@ -54,9 +52,8 @@ const ConfUpstreamAScript = () => {
       })      
       scriptArray.push(`exit\n`);
       context.script.scriptConfUpstreamA = scriptArray.join('');  
-      setScriptConfUpstreamA(scriptArray.join(''));  
     }
-
+    setInputText(scriptArray.join(''));
   };
 
   return (
@@ -64,12 +61,12 @@ const ConfUpstreamAScript = () => {
       <textarea
         rows={20}
         cols={72}
-        value={scriptConfUpstreamA}
+        value={context.script.scriptConfUpstreamA ? context.script.scriptConfUpstreamA : ''}
         placeholder="delete/shutdown Upstream-Cable (Seg A)"
         className="place-self-center col-start-2 row-start-4 border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event) => {
+          setInputText(event.target.value)
           context.script.scriptConfUpstreamA = event.target.value;
-          setScriptConfUpstreamA(event.target.value);
         }}
       />
       <div className="flex justify-end gap-1">

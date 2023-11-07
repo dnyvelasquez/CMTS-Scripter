@@ -6,14 +6,13 @@ const ConfUpstreamBScript = () => {
 
   const context = useContext(Context);
   const [confUpstreamB, setConfUpstreamB] = useState("clear");
-  const [scriptConfUpstreamB, setScriptConfUpstreamB] = useState("");
+  const [inputText, setInputText] = useState('');
   const scriptArray = [];
 
   const script = () => {
     
     if (confUpstreamB === "clear") {
       context.script.scriptConfUpstreamB = '';  
-      setScriptConfUpstreamB('');  
     }
 
     if (confUpstreamB === "description") {
@@ -25,7 +24,6 @@ const ConfUpstreamBScript = () => {
       })      
       scriptArray.push(`exit\n`);
       context.script.scriptConfUpstreamB = scriptArray.join('');  
-      setScriptConfUpstreamB(scriptArray.join(''));  
     }
 
     if (confUpstreamB === "configure") {
@@ -54,9 +52,8 @@ const ConfUpstreamBScript = () => {
       })      
       scriptArray.push(`exit\n`);
       context.script.scriptConfUpstreamB = scriptArray.join('');  
-      setScriptConfUpstreamB(scriptArray.join(''));  
     }
-
+    setInputText(scriptArray.join(''));
   };
 
   return (
@@ -64,12 +61,12 @@ const ConfUpstreamBScript = () => {
       <textarea
         rows={20}
         cols={72}
-        value={scriptConfUpstreamB}
+        value={context.script.scriptConfUpstreamB ? context.script.scriptConfUpstreamB : ''}
         placeholder="Configure Upstream-Cable (Seg B)"
         className="place-self-center col-start-2 row-start-4 border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event) => {
+          setInputText(event.target.value);
           context.script.scriptConfUpstreamB = event.target.value;
-          setScriptConfUpstreamB(event.target.value);
         }}
       />
       <div className="flex justify-end gap-1">

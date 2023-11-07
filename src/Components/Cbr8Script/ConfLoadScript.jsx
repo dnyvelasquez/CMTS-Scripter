@@ -5,7 +5,7 @@ import copy from "copy-to-clipboard";
 const ConfLoadScript = () => {
   const context = useContext(Context);
   const [confLoad, setConfLoad] = useState("clear");
-  const [scriptConfLoad, setScriptConfLoad] = useState("");
+  const [inputText, setInputText] = useState('')
   const scriptArray = [];
 
 
@@ -13,7 +13,6 @@ const ConfLoadScript = () => {
   const script = () => {
     if (confLoad === "clear") {
       context.script.scriptConfLoad = '';  
-      setScriptConfLoad('');  
     }
 
     if (confLoad === "script") {
@@ -27,9 +26,8 @@ const ConfLoadScript = () => {
         `  configure terminal\n`
       );
       context.script.scriptConfLoad = scriptArray.join("");  
-      setScriptConfLoad(scriptArray.join(""));  
     }
-
+    setInputText(scriptArray.join(''));
   };
 
   return (
@@ -37,12 +35,12 @@ const ConfLoadScript = () => {
       <textarea
         rows={4}
         cols={72}
-        value={scriptConfLoad}
+        value={context.script.scriptConfLoad ? context.script.scriptConfLoad : ''}
         placeholder="Configure Load-Balance-Groups"
         className="place-self-center col-start-2 row-start-4 border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event) => {
+          setInputText(event.target.value)
           context.script.scriptConfLoad = event.target.value;
-          setScriptConfLoad(event.target.value);
         }}
       />
       <div className="flex justify-end gap-1">

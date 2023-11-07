@@ -6,7 +6,7 @@ const ConfInterfaceScript = () => {
 
   const context = useContext(Context);
   const [confInterface, setConfInterface] = useState("clear");
-  const [scriptConfInterface, setScriptConfInterface] = useState("");
+  const [inputText, setInputText] = useState('')
   const scriptArray = [];
 
   const downstream = () => {
@@ -148,7 +148,6 @@ const ConfInterfaceScript = () => {
   const script = () => {
     if (confInterface === "clear") {
       context.script.scriptConfInterface = '';  
-      setScriptConfInterface('');  
     }
 
     if (confInterface === "no shutdown") {
@@ -156,7 +155,6 @@ const ConfInterfaceScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfInterface = scriptArray.join('');  
-      setScriptConfInterface(scriptArray.join(''));  
     }
 
     if (confInterface === "description") {
@@ -165,7 +163,6 @@ const ConfInterfaceScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfInterface = scriptArray.join('');  
-      setScriptConfInterface(scriptArray.join(''));  
     }
 
     if (confInterface === "downstream") {
@@ -174,7 +171,6 @@ const ConfInterfaceScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfInterface = scriptArray.join('');  
-      setScriptConfInterface(scriptArray.join(''));  
     }
 
     if (confInterface === "upstream") {
@@ -183,11 +179,10 @@ const ConfInterfaceScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfInterface = scriptArray.join('');  
-      setScriptConfInterface(scriptArray.join(''));  
     }
 
     if (confInterface === "configure") {
-      scriptArray.push(`interfaceCable${context.script.interfaceCable}\n`);
+      scriptArray.push(`interfaceCable${context.interfaceCable}\n`);
       scriptArray.push(`  load-interval 30\n`);
       scriptArray.push(`  description ${context.script.description}\n`);
       downstream();
@@ -204,8 +199,8 @@ const ConfInterfaceScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfInterface = scriptArray.join('');  
-      setScriptConfInterface(scriptArray.join(''));  
     }
+    setInputText(scriptArray.join(''));
   };
 
   return (
@@ -213,12 +208,12 @@ const ConfInterfaceScript = () => {
       <textarea
         rows={20}
         cols={72}
-        value={scriptConfInterface}
+        value={context.script.scriptConfInterface ? context.script.scriptConfInterface : ''}
         placeholder="configure Interface-Cable"
         className="border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event) => {
+          setInputText(event.target.value)
           context.script.scriptConfInterface = event.target.value;
-          setScriptConfInterface(event.target.value);
         }}
       />
 

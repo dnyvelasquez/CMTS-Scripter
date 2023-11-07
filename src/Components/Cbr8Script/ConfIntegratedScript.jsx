@@ -6,14 +6,13 @@ const ConfIntegratedScript = () => {
 
   const context = useContext(Context);
   const [confIntegrated, setConfIntegrated] = useState("clear");
-  const [scriptConfIntegrated, setScriptConfIntegrated] = useState("");
+  const [inputText, setInputText] = useState('')
   const scriptArray = [];
 
   const script = () => {
     
     if (confIntegrated === "clear") {
       context.script.scriptConfIntegrated = '';  
-      setScriptConfIntegrated('');  
     }
 
     if (confIntegrated === "description") {
@@ -22,7 +21,6 @@ const ConfIntegratedScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfIntegrated = scriptArray.join('');  
-      setScriptConfIntegrated(scriptArray.join(''));  
     }
 
     if (confIntegrated === "configure") {
@@ -53,9 +51,8 @@ const ConfIntegratedScript = () => {
       scriptArray.push(`  no shutdown\n`);
       scriptArray.push(`exit\n`);
       context.script.scriptConfIntegrated = scriptArray.join('');  
-      setScriptConfIntegrated(scriptArray.join(''));  
     }
-
+    setInputText(scriptArray.join(''));
   };
 
   return (
@@ -63,12 +60,12 @@ const ConfIntegratedScript = () => {
       <textarea
         rows={20}
         cols={72}
-        value={scriptConfIntegrated}
+        value={context.script.scriptConfIntegrated ? context.script.scriptConfIntegrated : ''}
         placeholder="delete/shutdown Integrated-Cable"
         className="place-self-center col-start-2 row-start-4 border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event) => {
+          setInputText(event.target.value);
           context.script.scriptConfIntegrated = event.target.value;
-          setScriptConfIntegrated(event.target.value);
         }}
       />
       <div className="flex justify-end gap-1">

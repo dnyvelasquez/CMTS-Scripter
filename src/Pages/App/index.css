@@ -27,6 +27,11 @@ input[type=text]{
     border-color: #188c9b;
 }
 
+input[type=button]:hover{
+    background-color: #21b6c4;
+    cursor: pointer;
+}
+
 textarea {
     border-color: #188c9b;
 }

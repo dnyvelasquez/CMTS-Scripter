@@ -22,10 +22,10 @@ const Cbr8Script = () => {
     <div className={`w-4/6 grid grid-cols-auto grid-rows-auto gap-4 mb-4 absolute top-20 pb-8
       ${context.isScript ? "face-a" : "face-b"}`}>
       <h2 className="place-self-center font-bold col-start-1 row-start-1 mt-4 text-sm">
-        CONFIGURE INTERFACES
+        DELETE/SHUTDOWN INTERFACES
       </h2>
       <h2 className="place-self-center font-bold col-start-2 row-start-1 mt-4 text-sm">
-        DELETE/SHUTDOWN INTERFACES
+        CONFIGURE INTERFACES
       </h2>
       <div className="flex place-self-center col-start-1 row-start-2">
         <DelShutInterfaceScript />
