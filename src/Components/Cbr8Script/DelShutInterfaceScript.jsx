@@ -10,7 +10,7 @@ const DelShutInterfaceScript = () => {
 
   const script = () => {
     if (delShutInterface === "clear") {
-      context.script.scriptDelShutInterface = "";
+      context.script.scriptDelShutInterface = ''; 
     }
 
     if (delShutInterface === "shutdown") {
@@ -70,7 +70,7 @@ const DelShutInterfaceScript = () => {
         className="place-self-center border-2 w-full resize-none rounded-md my-4 text-sm"
         onChange={(event)=> {
             setInputText(event.target.value);
-            context.script.scriptDelShutIntegrated = event.target.value;
+            context.script.scriptDelShutInterface = event.target.value;
         }}
     />
       <div className="flex justify-end gap-1">
