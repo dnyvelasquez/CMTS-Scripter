@@ -77,6 +77,15 @@ const NavBar = () => {
                     </li>
                 </ul>
             </div>
+            <div className="mr-8">
+                <ul>
+                    <NavLink to='/about'>
+                        <li className="font-semibold">
+                            About
+                        </li>
+                    </NavLink>
+                </ul>
+            </div>
         </nav>                        
     )
 }
