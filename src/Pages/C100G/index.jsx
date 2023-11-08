@@ -3,7 +3,10 @@ import Layout from "../../Components/Layout";
 const C100g = () => {
   return (
     <Layout>
-      C100g
+      <h2 className="font-bold">
+        CASA C100G
+      </h2>
+      <UnderConst />
     </Layout>
   )
 }
