@@ -45,16 +45,16 @@ const NavBar = () => {
                         }}
 
                     >
-                        <NavLink to='/'>
+                        <NavLink to='/CMTS-Scripter/'>
                             CMTS-Scripter
                         </NavLink>
                     </li>
                     <li>
-                        Search OC
                         <input 
                             type="text" 
                             className="self-auto m-2 border-2 rounded-md"
                             value={context.searchOc}
+                            placeholder="Search OC"
                             onChange={(event) => {context.setSearchOc(event.target.value)}}
                             onBlur ={(event) => {
                                 oc?.map((item) => {
@@ -73,14 +73,12 @@ const NavBar = () => {
                                 setIndVisible(false);
                             }}
                         />
-                        <p className={`text-red-700 fixed top-11 left-64 font-semibold ${isIndVisible ? '' : 'hidden'}`}>
-                            Type 12345 or 12346 for instance
+                        <p className={`text-red-700 fixed top-11 left-52 font-semibold text-xs ${isIndVisible ? '' : 'hidden'}`}>
+                            *Type 12345 or 12346 for instance
                         </p>
                         <NavLink to={`/CMTS-Scripter/${cmts}`}>
                             <button 
                                 className="primary-button border-2 w-20 h-8 rounded-md"
-                                alt={'Can use OC number : 12345 and 12346'}
-
                                 onClick={() => {
                                     if (context.script.oc) {
                                         context.setSearchOc('');
