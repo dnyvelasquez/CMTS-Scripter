@@ -33,7 +33,7 @@ const ModalNew = () => {
                   >
                     Close
                   </button>
-                    <NavLink to={`/${context.script.cmts}`}>
+                    <NavLink to={`/CMTS-Scripter/${context.script.cmts}`}>
                         <button id="createButton"
                             className="primary-button border-2 w-20 h-8 rounded-md"
                             onClick={() => {

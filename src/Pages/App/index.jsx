@@ -13,11 +13,12 @@ import './index.css';
 const AppRoutes = () => {
   let routes = useRoutes([
     {path: '/', element: <Home />},
-    {path: '/c100g', element: <C100g />},
-    {path: '/cbr8', element: <Cbr8 />},
-    {path: '/cos', element: <Cos />},
-    {path: '/e6000', element: <E6000 />},
-    {path: '/about', element: <About />},
+    {path: '/CMTS-Scripter/', element: <Home />},
+    {path: '/CMTS-Scripter/c100g', element: <C100g />},
+    {path: '/CMTS-Scripter/cbr8', element: <Cbr8 />},
+    {path: '/CMTS-Scripter/cos', element: <Cos />},
+    {path: '/CMTS-Scripter/e6000', element: <E6000 />},
+    {path: '/CMTS-Scripter/about', element: <About />},
     {path: '/*', element: <NotFound />},
   ])
   return routes;

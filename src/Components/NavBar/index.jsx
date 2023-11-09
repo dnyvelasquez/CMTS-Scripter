@@ -76,7 +76,7 @@ const NavBar = () => {
                         <p className={`text-red-700 fixed top-11 left-64 font-semibold ${isIndVisible ? '' : 'hidden'}`}>
                             Type 12345 or 12346 for instance
                         </p>
-                        <NavLink to={`/${cmts}`}>
+                        <NavLink to={`/CMTS-Scripter/${cmts}`}>
                             <button 
                                 className="primary-button border-2 w-20 h-8 rounded-md"
                                 alt={'Can use OC number : 12345 and 12346'}
@@ -105,7 +105,7 @@ const NavBar = () => {
             </div>
             <div className="mr-8">
                 <ul>
-                    <NavLink to='/about'>
+                    <NavLink to='/CMTS-Scripter/about'>
                         <li className="font-semibold">
                             About
                         </li>
