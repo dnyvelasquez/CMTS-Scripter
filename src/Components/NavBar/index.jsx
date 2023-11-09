@@ -9,6 +9,7 @@ const NavBar = () => {
     const context = useContext(Context);
     const [oc, setOc] = useState(null);
     const [cmts, setCmts] = useState('');
+    const [isIndVisible, setIndVisible] = useState(false);
 
     useEffect(() => {
         fetch('https://dnyvelasquez.github.io/APIs/CmtsApi/ocs.json')
@@ -24,9 +25,25 @@ const NavBar = () => {
                     <li 
                         className="font-semibold text-lg"
                         onClick={() => {
+                            context.setInterfaceCable('');
                             context.setSearchOc('');
-                            context.setScript({});
+                            context.setScript({
+                                dsChan:[],
+                                dsFreq:[],
+                                dsPow:[],
+                                dsPrim:[],
+                                usChanA:[],
+                                usChanB:[],
+                                usFreqA:[],
+                                usFreqB:[],
+                                usWidthA:[],
+                                usWidthB:[],                                                    
+                            });
                         }}
+                        onMouseOver={() => {
+                            
+                        }}
+
                     >
                         <NavLink to='/'>
                             CMTS-Scripter
@@ -49,7 +66,16 @@ const NavBar = () => {
                                     }
                                 })
                             }}
+                            onMouseOver={() => {
+                                setIndVisible(true);
+                            }}
+                            onMouseLeave={() => {
+                                setIndVisible(false);
+                            }}
                         />
+                        <p className={`text-red-700 fixed top-11 left-64 font-semibold ${isIndVisible ? '' : 'hidden'}`}>
+                            Type 12345 or 12346 for instance
+                        </p>
                         <NavLink to={`/${cmts}`}>
                             <button 
                                 className="primary-button border-2 w-20 h-8 rounded-md"

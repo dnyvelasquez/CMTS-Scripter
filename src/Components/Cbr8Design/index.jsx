@@ -53,7 +53,7 @@ const Cbr8Design = () => {
             />
 
             <p className="col-start-4 row-start-1 text-xs font-bold">DS Chan</p>
-            {dsCh.map((item) => 
+            {dsCh?.map((item) => 
                 <input key={item} 
                     value={context.script.dsChan[item-1] ? context.script.dsChan[item-1] : ''}
                     style={{gridRowStart: item+1}} 
@@ -67,7 +67,7 @@ const Cbr8Design = () => {
             }
             
             <p className="col-start-5 row-start-1 text-xs font-bold">DS Freq</p>
-            {dsCh.map((item) => 
+            {dsCh?.map((item) => 
                 <input key={item} 
                     value={context.script.dsFreq[item-1] ? context.script.dsFreq[item-1] : ''}
                     style={{gridRowStart: item+1}} 
@@ -81,7 +81,7 @@ const Cbr8Design = () => {
             }
             
             <p className="col-start-6 row-start-1 text-xs font-bold">DS Pow</p>
-            {dsCh.map((item) => 
+            {dsCh?.map((item) => 
                 <input key={item} 
                     value={context.script.dsPow[item-1] ? context.script.dsPow[item-1] : ''}               
                     style={{gridRowStart: item+1}}
@@ -95,7 +95,7 @@ const Cbr8Design = () => {
             }
 
             <p className="col-start-7 row-start-1 text-xs font-bold">Primary</p>
-            {dsCh.map((item) => 
+            {dsCh?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.dsPrim[item-1] ? context.script.dsPrim[item-1] : ''}          
@@ -156,7 +156,7 @@ const Cbr8Design = () => {
             />
 
             <p className="col-start-10 row-start-1 text-xs font-bold">US Chan</p>
-            {usChA.map((item) => 
+            {usChA?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usChanA[item-1] ? context.script.usChanA[item-1] : ''} 
@@ -169,7 +169,7 @@ const Cbr8Design = () => {
                     onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
-            {usChB.map((item) => 
+            {usChB?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usChanB[item-1] ? context.script.usChanB[item-1] : ''} 
@@ -184,7 +184,7 @@ const Cbr8Design = () => {
             )}
 
             <p className="col-start-11 row-start-1 text-xs font-bold">US Freq</p>
-            {usChA.map((item) => 
+            {usChA?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usFreqA[item-1] ? context.script.usFreqA[item-1] : ''} 
@@ -197,7 +197,7 @@ const Cbr8Design = () => {
                     onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
-            {usChB.map((item) => 
+            {usChB?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usFreqB[item-1] ? context.script.usFreqB[item-1] : ''} 
@@ -212,7 +212,7 @@ const Cbr8Design = () => {
             )}
 
             <p className="row-start-1 text-xs font-bold" style={{gridColumnStart: 12}}>US ChW</p>
-            {usChA.map((item) => 
+            {usChA?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usWidthA[item-1] ? context.script.usWidthA[item-1] : ''} 
@@ -225,7 +225,7 @@ const Cbr8Design = () => {
                     onChange={(event) => {setInputText(event.target.value)}}
                 />
             )}
-            {usChB.map((item) => 
+            {usChB?.map((item) => 
                 <input 
                     key={item} 
                     value={context.script.usWidthB[item-1] ? context.script.usWidthB[item-1] : ''} 

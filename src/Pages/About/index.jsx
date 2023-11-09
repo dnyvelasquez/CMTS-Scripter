@@ -7,7 +7,7 @@ const About = () => {
             <div className="border-x-2 h-screen w-3/4 flex flex-col items-center-center px-12">
                 <p className="text-center my-4">
                     This app was made by Daniel Velásquez to support the construction of CLI configuration scripts 
-                    for the CMTS Cisco CBR8, Arris E6000, Casa C100G and Harris CmtsOS.
+                    for the CMTS Cisco CBR8, Arris E6000, Casa C100G and Harmonic CmtsOS.
                 </p>
                 <p className="text-center my-4">
                     The user of this app might know about the CLI of each CMTS reference, how to apply and what do
