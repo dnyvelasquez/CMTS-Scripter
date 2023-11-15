@@ -8,7 +8,7 @@ const Card = (data) => {
       <img
         src={data.data.img}
         alt={data.data.name}
-        className="h-full w-full object-contain transition duration-500 group-hover:scale-105 sm:h-72"
+        className="h-full w-full object-contain transition duration-500 group-hover:scale-105"
       />
       <div className="relative bg-white p-6">
         <h3 className="mt-4 text-lg font-medium text-gray-900">{data.data.name}</h3>
