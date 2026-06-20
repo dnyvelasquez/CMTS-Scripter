@@ -8,14 +8,14 @@ const Cmts = [
         {
             "id": 1,
             "name": "Arris E6000",
-            "img": "https://www.commscope.com/globalassets/digizuite/61851-e6000-hero.png",
+            "img": "https://www.normann-engineering.com/products/product_pics/ccap_cmts/arris/E6000_katalog1.png",
             "route": "e6000"
 
         },
         {
             "id": 2,
             "name": "Casa C100G",
-            "img": "https://www.casa-systems.com/wp-content/uploads/2021/01/product-image-C100G-1.png",
+            "img": "https://www.normann-engineering.com/products/product_pics/ccap_cmts/casa/C100G_katalog.png",
             "route": "c100g"            
         },
         {

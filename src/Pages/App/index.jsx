@@ -27,15 +27,13 @@ const AppRoutes = () => {
 const App = () => {
 
   return (
-    <ContextProvider>      
-      
+    <ContextProvider>            
       <BrowserRouter>
         <AppRoutes />
         <header>
             <NavBar />
         </header>
       </BrowserRouter>
-
     </ContextProvider>
   )
 }
