@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Context } from "../../Context";
 import Layout from "../../Components/Layout";
-import LeftSideBar from "../../Components/leftSideBar";
+import LeftSideBar from "../../Components/LeftSideBar";
 import RightSideBar from "../../Components/RightSideBar";
 import Cbr8Script from "../../Components/Cbr8Script";
 import Cbr8Design from "../../Components/Cbr8Design";

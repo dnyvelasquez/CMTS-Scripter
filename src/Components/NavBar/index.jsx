@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context";
 import { NavLink } from "react-router-dom";
 import copy from "copy-to-clipboard";
-import logo from "../../assets/DVShark.svg";
+import logo from "../../Assets/DVShark.svg";
 
 const NavBar = () => {
 
